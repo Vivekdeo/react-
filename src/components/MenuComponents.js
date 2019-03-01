@@ -2,12 +2,14 @@ import React,{ Component } from 'react';
 import { Media } from 'reactstrap';
 import {Card,CardImg,CardImgOverlay,CardText,CardBody,CardTitle} from 'reactstrap';
 
+import DishDetails from "./dishdetails";
+
 class Menu extends Component{
 
 	constructor(props){
 		super(props);
 		this.state={
-       selectedDish:null
+       selectedDish: null
 	}
 }
   onDishSelect(dish){
@@ -87,9 +89,7 @@ class Menu extends Component{
                     {menu}
                 </div>
                 <div className="row">
-                  <div  className="col-12  m-1">
-                    {this.renderDish(this.state.selectedDish)}
-                  </div>
+                  <DishDetails dish={this.state.selectedDish}></DishDetails>                  
                 </div>
             </div>
         );
