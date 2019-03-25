@@ -27,6 +27,14 @@ class Main extends Component {
   
 
   render() {
+    const DishWithId=({match})=>{
+      return(
+        <DishDetails dish={this.state.dishes.filter((dish)=>dish.id===parseInt(match.params.dishId,10))[0]}
+        comments={this.state.comments.filter((comment)=>comment.dishId===parseInt(match.params.dishId,10))}>
+        </DishDetails>
+      );
+    }
+
     const HomePage=()=>{
       return(
         <Home dish={this.state.dishes.filter((dish)=>dish.featured)[0]}
@@ -43,6 +51,7 @@ class Main extends Component {
             <Route path="/home" component={HomePage}></Route>
             <Route exact path="/menu" component={()=> <Menu dishes={this.state.dishes}></Menu>}></Route>
             <Route exact path="/contactus" component={Contact}></Route>
+            <Route path="/menu/:dishId" component={DishWithId}></Route>
             <Redirect to="/home"></Redirect>
           </Switch>
           <Footer/>
